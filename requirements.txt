@@ -1,0 +1,6 @@
+lyricsgenius
+transformers
+torch
+python-dotenv
+datasets
+accelerate

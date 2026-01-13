@@ -1,0 +1,5 @@
+.env
+yeat_model/
+__pycache__/
+*.json
+yeat_lyrics.txt
