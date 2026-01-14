@@ -1,38 +1,31 @@
-# Yeat LLM
+# 🚜 Yeat-LLM (TwizzyBot)
 
-This project scrapes Yeat lyrics from Genius and trains a small Language Model (GPT-2) to generate new songs in his style.
+The easiest way to make your own Yeat songs and talk to the Geeker.
 
-## Setup
+## 🚀 How to use
+1. **Open** a terminal in this folder.
+2. **Run** these simple commands:
 
-1.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+# Install everything
+pip install -r requirements.txt
 
-2.  **API Key**:
-    The `.env` file contains the Genius API Token. 
-    *Note: The token provided initially seems to be invalid/expired. Please generate a new Client Access Token from [Genius API Clients](https://genius.com/api-clients) and update the `.env` file.*
+# Download lyrics
+python3 scrape_lyrics.py
 
-## Usage
+# Train the AI
+python3 train_model.py
 
-1.  **Scrape Lyrics**:
-    Run the scraper to download lyrics into `yeat_lyrics.txt`.
-    ```bash
-    python scrape_lyrics.py
-    ```
-    For a quick smoke test that only processes the first song you can run:
-    ```bash
-    python scrape_lyrics.py --max-songs 5 --per-page 5 --limit 1
-    ```
+# Chat with Yeat!
+python3 yeat_bot.py
+```
 
-2.  **Train Model**:
-    Fine-tune GPT-2 on the collected lyrics.
-    ```bash
-    python train_model.py
-    ```
+## 📦 Making it an App (.exe / .app)
+If you want to turn this into a single clickable file to share with friends, run:
+```bash
+pyinstaller --onefile --add-data "yeat_model:yeat_model" yeat_bot.py
+```
+Look inside the `dist` folder for your app!
 
-3.  **Chat & Generate**:
-    Interact with the model or generate new songs.
-    ```bash
-    python yeat_bot.py
-    ```
+## ⚠️ Requirements
+- You need a Genius API Token in the `.env` file.
