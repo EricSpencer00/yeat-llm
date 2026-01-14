@@ -20,6 +20,10 @@ This project scrapes Yeat lyrics from Genius and trains a small Language Model (
     ```bash
     python scrape_lyrics.py
     ```
+    For a quick smoke test that only processes the first song you can run:
+    ```bash
+    python scrape_lyrics.py --max-songs 5 --per-page 5 --limit 1
+    ```
 
 2.  **Train & Generate**:
     Run the training script to fine-tune GPT-2 and generate text.
