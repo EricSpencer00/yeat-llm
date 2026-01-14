@@ -2,6 +2,12 @@ import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 import os
 
+# Colors for terminal
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+MAGENTA = "\033[95m"
+RESET = "\033[0m"
+
 class YeatBot:
     def __init__(self, model_path='yeat_model'):
         if not os.path.exists(model_path):
@@ -40,11 +46,11 @@ class YeatBot:
 
     def chat(self):
         """Interactive chat mode with the Yeat model."""
-        print("\nTwizzyBot is active. Type 'quit' to exit.")
-        print("Tip: Use Yeat-style prompts like 'I just pulled up' or 'Luh geek'.\n")
+        print(f"\n{MAGENTA}TwizzyBot is active.{RESET} Type 'quit' to exit.")
+        print(f"{CYAN}Tip:{RESET} Use Yeat-style prompts like 'I just pulled up' or 'Luh geek'.\n")
         
         while True:
-            user_input = input("You: ")
+            user_input = input(f"{GREEN}You:{RESET} ")
             if user_input.lower() in ['quit', 'exit', 'q']:
                 break
                 
@@ -71,7 +77,7 @@ class YeatBot:
             if not reply:
                 reply = response
                 
-            print(f"Yeat: {reply}\n")
+            print(f"{MAGENTA}Yeat:{RESET} {reply}\n")
 
 if __name__ == "__main__":
     bot = YeatBot()
