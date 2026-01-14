@@ -3,3 +3,5 @@ yeat_model/
 __pycache__/
 *.json
 yeat_lyrics.txt
+cached_lm_GPT2Tokenizer_128_yeat_lyrics.txt
+cached_lm_GPT2Tokenizer_128_yeat_lyrics.txt.lock
