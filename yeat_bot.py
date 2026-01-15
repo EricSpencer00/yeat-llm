@@ -47,12 +47,26 @@ class YeatBot:
     def chat(self):
         """Interactive chat mode with the Yeat model."""
         print(f"\n{MAGENTA}TwizzyBot is active.{RESET} Type 'quit' to exit.")
-        print(f"{CYAN}Tip:{RESET} Use Yeat-style prompts like 'I just pulled up' or 'Luh geek'.\n")
+        print(f"{CYAN}Tip:{RESET} Enter in gen_song() to generate a new song, put the prompt inside the parentheses.\n")
         
         while True:
             user_input = input(f"{GREEN}You:{RESET} ")
             if user_input.lower() in ['quit', 'exit', 'q']:
                 break
+
+            # Check for gen_song() command
+            if user_input.startswith("gen_song("):
+                try:
+                    # Extract prompt from between parentheses
+                    prompt = user_input.split("(", 1)[1].rsplit(")", 1)[0].strip()
+                    if not prompt:
+                        prompt = "twizzy"
+                    print(self.generate_song(prompt=prompt))
+                    print() # Extra newline
+                    continue
+                except Exception:
+                    print(f"{CYAN}Tip:{RESET} Use format gen_song(your prompt here)")
+                    continue
                 
             # Use __call__ instead of encode to get attention_mask
             inputs = self.tokenizer(user_input, return_tensors='pt').to(self.device)
@@ -82,8 +96,5 @@ class YeatBot:
 if __name__ == "__main__":
     bot = YeatBot()
     
-    # 1. Generate a sample song
-    print(bot.generate_song(prompt="Luh geek"))
-    
-    # 2. Enter chat mode
+    # Enter chat mode
     bot.chat()
